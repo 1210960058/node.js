@@ -6,11 +6,12 @@
 </head>
 <body>
 	<form method="post">
-	<input type="text" name="name">
+	<p>名前：<input type="text" name="name"></p>
+	<p>メッセージ：<br><input type="text" name="message"></p>	
 	<input type="submit" value="Post!">
 	<ul>
 		<% for (var i = 0; i < posts.length; i++){ %>
-		<li><%= posts[i] %></li>
+		<li> 名前＝<%= posts[i] %>  メッセージ＝<%= massage[i] %></li>
 		<%}%>
 	</ul>
 </body>
