@@ -3,16 +3,28 @@
 <head>
 	<title>BBS</title>
 	<meta charset="utf-8">
+	<style type="text/css">
+		body{
+			background-color: green;
+			color: white;
+		}
+		li{
+			list-style: none;
+			border-style: double ; 
+			border-width: 1px;
+			border-color: black;
+		}
+	</style>
 </head>
 <body>
-	<form method="post">
-	<p>名前：<input type="text" name="name"></p>
-	<p>メッセージ：<br><input type="text" name="message"></p>	
-	<input type="submit" value="Post!">
 	<ul>
 		<% for (var i = 0; i < posts.length; i++){ %>
-		<li> 名前＝<%= posts[i] %>  メッセージ＝<%= massage[i] %>　投稿時間＝<%= date[i] %></li>
+		<li> 名前　　　　[<%= posts[i] %>]<br>投稿時間　[<%= date[i] %>]<br>内容　　　　[<%= massage[i] %>]　</li>
 		<%}%>
 	</ul>
-</body>
+	<form method="post">
+	<p>名前：<input type="text" name="name"></p>
+	<p>メッセージ：<br><textarea name="message" rows="4" cols="40"></textarea></p>	
+	<input type="submit" value="書き込む">
+	</body>
 </html>
