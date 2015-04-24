@@ -6,7 +6,7 @@ var http = require('http'),//httpオブジェクトのロード
 var setting = require('./setting');//setting.jsと言う外部ファイルを読み込む
 var server = http.createServer();//サーバーオブジェクトの作成
 var template = fs.readFileSync(__dirname + '/bbs.ejs','utf-8');
-var dt = new Date();
+var dt;
 var date = [];
 var posts = [];
 var massage = [];
@@ -36,6 +36,7 @@ function doRequest(req, res){
 			console.log(query.name);
 			massage.push(query.message);
 			console.log(query.message);
+			dt = new Date();
 			date.push(dt.toFormat("YYYY/MM/DD HH24時MI分SS秒"));
 			renderForm(posts,massage,date, res);
 			fs.appendFile('bbsLog.txt',query.name+query.massage+'\n','utf-8');
