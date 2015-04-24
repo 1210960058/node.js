@@ -39,7 +39,7 @@ function doRequest(req, res){
 			dt = new Date();
 			date.push(dt.toFormat("YYYY/MM/DD HH24時MI分SS秒"));
 			renderForm(posts,massage,date, res);
-			fs.appendFile('bbsLog.txt',query.name+query.massage+'\n','utf-8');
+			fs.appendFile('bbsLog.txt',query.name+query.message+dt.toFormat("YYYY/MM/DD HH24時MI分SS秒")+'\n','utf-8');
 		});
 	} else{
 		renderForm(posts,massage,date,res);
