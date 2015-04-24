@@ -1,16 +1,20 @@
 var http = require('http'),//httpオブジェクトのロード
 	fs = require('fs'),
 	ejs= require('ejs'),
-	qs =require('querystring');
+	qs =require('querystring'),
+	dt=require('date-utils');
 var setting = require('./setting');//setting.jsと言う外部ファイルを読み込む
 var server = http.createServer();//サーバーオブジェクトの作成
 var template = fs.readFileSync(__dirname + '/bbs.ejs','utf-8');
+var dt = new Date();
+var date = [];
 var posts = [];
 var massage = [];
-function renderForm(posts,massage,res){
+function renderForm(posts,massage,date,res){
 	var date = ejs.render(template,{
 		posts: posts,
-		massage: massage
+		massage: massage,
+		date: date
 	});
 	res.writeHead(200,{'Content-Type' : 'text/html'});
 	res.write(date);
@@ -32,11 +36,12 @@ function doRequest(req, res){
 			console.log(query.name);
 			massage.push(query.message);
 			console.log(query.message);
-			renderForm(posts,massage, res);
-
+			date.push(dt.toFormat("YYYY/MM/DD HH24時MI分SS秒"));
+			renderForm(posts,massage,date, res);
+			fs.appendFile('bbsLog.txt',query.name+query.massage+'\n','utf-8');
 		});
 	} else{
-		renderForm(posts,massage,res);
+		renderForm(posts,massage,date,res);
 	}
 
 
