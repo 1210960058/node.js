@@ -1,2 +1,2 @@
 # node.js
-勉強用のnode.js
+raspberryPi 2Bで実行をしています

@@ -14,6 +14,13 @@
 			border-width: 1px;
 			border-color: black;
 		}
+		input:focus {
+    		border:solid 1px blue;
+		}
+
+		input.iMessage { 
+			width: 50%;
+			}
 	</style>
 </head>
 <body>
@@ -23,8 +30,8 @@
 		<%}%>
 	</ul>
 	<form method="post">
-	<p>名前：<input type="text" name="name"></p>
-	<p>メッセージ：<br><textarea name="message" rows="4" cols="40"></textarea></p>	
+	<p>名前：　   <input type="text" name="name"></p>
+	<p>メッセージ： <input name="message" class="iMessage"></p>
 	<input type="submit" value="書き込む">
 	</body>
 </html>
